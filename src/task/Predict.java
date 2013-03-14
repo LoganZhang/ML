@@ -42,9 +42,10 @@ public class Predict {
                 double probability = 1.0;
                 for (String f : es.getFeatures()) {
                     String valueX = instance.getValueByFeature(f);
-                        probability *= pc.getPxGz(new FV(f, valueX), f);
+                        probability *= pc.getPxGz(new FV(f, valueX), label);
                     }
-                
+                double t3 =  pc.getPz(label);
+                probability *= t3;
                 if (probability > maxP) {
                     maxP = probability;
                     prediction = label;
